@@ -3,43 +3,180 @@
 
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kuesioner Literasi Digital Guru</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
-
-body{
-    font-family:'Poppins',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.option-card div{
-    @apply bg-white border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all duration-200;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    color: #333;
 }
 
-.option-card input:checked + div{
-    background: linear-gradient(135deg,#6366f1,#8b5cf6);
-    color:white;
-    border-color:#6366f1;
-    transform:scale(1.02);
+.container {
+    max-width: 1100px;
+    margin: auto;
 }
 
+.header {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 40px;
+    color: white;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    opacity: 0.95;
+    line-height: 1.7;
+}
+
+.section {
+    background: white;
+    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.section h2 {
+    color: #5a4fcf;
+    margin-bottom: 10px;
+}
+
+.section p.desc {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.sub-title {
+    background: linear-gradient(90deg,#667eea,#764ba2);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 14px;
+    margin: 25px 0 18px;
+    font-weight: 600;
+}
+
+.question {
+    padding: 20px;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    transition: all .3s ease;
+}
+
+.question:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.question p {
+    margin-bottom: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+}
+
+.option {
+    text-align: center;
+}
+
+.option input {
+    display: none;
+}
+
+.option label {
+    display: block;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f5f7ff;
+    cursor: pointer;
+    transition: all .25s ease;
+    border: 2px solid transparent;
+    font-size: 14px;
+}
+
+.option input:checked + label {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    border-color: #5a4fcf;
+}
+
+.legend {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.submit-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    border: none;
+    padding: 16px 34px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    opacity: 0.9;
+}
+
+@media(max-width:768px){
+    .options {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
-
-<title>Kuesioner</title>
 </head>
-
 <body>
 <div class="container">
 <div class="header">
 <h1>Kuesioner Literasi Digital Guru</h1>
 <p>
-        <div></div>Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi, dan literasi digital guru 
-        dalam memanfaatkan teknologi Artificial Intelligence (AI) pada pembelajaran Bahasa Indonesia.</div>
-        <div></div>Mohon berikan jawaban yang paling sesuai dengan kondisi dan pandangan Anda.</div>
+        Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi, dan literasi digital guru 
+        dalam memanfaatkan teknologi Artificial Intelligence (AI) pada pembelajaran Bahasa Indonesia.
+        Mohon berikan jawaban yang paling sesuai dengan kondisi dan pandangan Anda.
     </p>
 <div style="margin-top:20px;">
 <div style="margin-top:20px;">
@@ -52,10 +189,10 @@ body{
 </div>
 </div></div>
 <div class="section">
-<h2>Aspek kesiapan dan literasi digital</h2>
-<p class="desc">Mengukur pemahaman fundamental terhadap teknologi digital dan teori literasi baru (new literacies) dalam konteks pengajaran.</p>
+<h2>Aspek kesiapan dan literasi digital guru</h2>
+<p class="desc">Mengukur pemahaman fundamental guru terhadap teknologi digital dan teori literasi baru (new literacies) dalam konteks pengajaran.</p>
 <div class="sub-title">
-                Pemahaman Fundamental Teknologi (Teknis)-Sejauh mana familiar dengan perangkat AI (seperti ChatGPT, aplikasi analisis teks, dsb.) dan mampu mengoperasikannya.
+                Pemahaman Fundamental Teknologi (Teknis)-Sejauh mana guru familiar dengan perangkat AI (seperti ChatGPT, aplikasi analisis teks, dsb.) dan mampu mengoperasikannya.
             </div>
 <div class="question">
 <p>1. Saya menyadari pentingnya mengajarkan etika digital kepada siswa, seperti menghindari plagiasi dan menyalin utuh hasil karya AI.</p>
@@ -91,35 +228,28 @@ body{
 </div>
 <div class="question">
 <p>2. Saya merasa penggunaan AI dalam pembelajaran Bahasa Indonesia justru membuat siswa malas berpikir kritis karena bergantung pada jawaban instan.</p>
-<div class="grid grid-cols-2 gap-3 mt-4">
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="1" hidden>
-    <div>STS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="2" hidden>
-    <div>TS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="3" hidden>
-    <div>N</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="4" hidden>
-    <div>S</div>
-  </label>
-
-  <label class="option-card col-span-2">
-    <input type="radio" name="q1" value="5" hidden>
-    <div>SS</div>
-  </label>
-
+<div class="options">
+<div class="option">
+<input id="q2_1" name="q2" type="radio" value="1"/>
+<label for="q2_1">STS</label>
 </div>
-
+<div class="option">
+<input id="q2_2" name="q2" type="radio" value="2"/>
+<label for="q2_2">TS</label>
+</div>
+<div class="option">
+<input id="q2_3" name="q2" type="radio" value="3"/>
+<label for="q2_3">N</label>
+</div>
+<div class="option">
+<input id="q2_4" name="q2" type="radio" value="4"/>
+<label for="q2_4">S</label>
+</div>
+<div class="option">
+<input id="q2_5" name="q2" type="radio" value="5"/>
+<label for="q2_5">SS</label>
+</div>
+</div>
 <div class="legend">
 <span>STS = Sangat Tidak Setuju</span>
 <span>TS = Tidak Setuju</span>
@@ -130,43 +260,12 @@ body{
 </div>
 <div class="question">
 <p>3. Saya memosisikan AI sebagai teman bertukar pikiran untuk menemukan ide baru saat merancang pembelajaran, bukan sekadar menyuruhnya membuatkan soal.</p>
-<div class="grid grid-cols-2 gap-3 mt-4">
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="1" hidden>
-    <div>STS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="2" hidden>
-    <div>TS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="3" hidden>
-    <div>N</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="4" hidden>
-    <div>S</div>
-  </label>
-
-  <label class="option-card col-span-2">
-    <input type="radio" name="q3" value="5" hidden>
-    <div>SS</div>
-  </label>
-
+<div class="options">
+<div class="option">
+<input id="q3_1" name="q3" type="radio" value="1"/>
+<label for="q3_1">STS</label>
 </div>
-
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
+<div class="option">
 <input id="q3_2" name="q3" type="radio" value="2"/>
 <label for="q3_2">TS</label>
 </div>
@@ -323,7 +422,7 @@ body{
 </div>
 </div>
 <div class="sub-title">
-                Sikap, Persepsi, dan Etika (Afektif)-Bagaimana sikap mental terhadap disrupsi AI, termasuk pemahaman tentang bias AI, plagiarisme, dan etika digital.
+                Sikap, Persepsi, dan Etika (Afektif)-Bagaimana sikap mental guru terhadap disrupsi AI, termasuk pemahaman tentang bias AI, plagiarisme, dan etika digital.
             </div>
 <div class="question">
 <p>8. Jika siswa menggunakan AI untuk mengembangkan ide tulisan, saya menilainya sebagai keterampilan literasi yang patut diapresiasi bukan kecurangan.</p>
@@ -455,10 +554,10 @@ body{
 </div>
 </div>
 <div class="section">
-<h2>Persepsi dan sikap terhadap AI</h2>
-<p class="desc">Pandangan mengenai AI sebagai "mitra kognitif" atau lingkungan belajar, bukan sekadar alat bantu.</p>
+<h2>Persepsi dan sikap guru terhadap AI</h2>
+<p class="desc">Pandangan guru mengenai AI sebagai "mitra kognitif" atau lingkungan belajar, bukan sekadar alat bantu.</p>
 <div class="sub-title">
-                Perspektif Instrumentalis (AI sebagai Alat Bantu)-keyakinan epistemologis terhadap AI
+                Perspektif Instrumentalis (AI sebagai Alat Bantu)-keyakinan epistemologis guru terhadap AI
             </div>
 <div class="question">
 <p>12. Saya menyesuaikan metode mengajar dengan fasilitas teknologi yang ada di sekolah agar target pembelajaran Bahasa Indonesia tercapai.</p>
@@ -658,9 +757,9 @@ body{
 </div>
 <div class="section">
 <h2>Praktik integrasi teknologi</h2>
-<p class="desc">Memetakan sejauh mana telah mengintegrasikan aplikasi berbasis teknologi dalam kurikulum Bahasa Indonesia saat ini.</p>
+<p class="desc">Memetakan sejauh mana guru telah mengintegrasikan aplikasi berbasis teknologi dalam kurikulum Bahasa Indonesia saat ini.</p>
 <div class="sub-title">
-                Integrasi Aktif (Modifikasi &amp; Redefinisi)-menggunakan platform digital untuk kolaborasi penulisan teks secara real-time, menggunakan AI untuk memberikan umpan balik instan pada struktur kalimat, atau meminta siswa membuat proyek multimedia (literasi multimoda) sebagai pengganti esai tradisional.
+                Integrasi Aktif (Modifikasi &amp; Redefinisi)-Guru menggunakan platform digital untuk kolaborasi penulisan teks secara real-time, menggunakan AI untuk memberikan umpan balik instan pada struktur kalimat, atau meminta siswa membuat proyek multimedia (literasi multimoda) sebagai pengganti esai tradisional.
             </div>
 <div class="question">
 <p>18. Sekolah tidak memiliki teknisi khusus yang bisa segera membantu jika terjadi gangguan perangkat atau sistem saat saya sedang mengajar.</p>
