@@ -1,948 +1,297 @@
-
 <!DOCTYPE html>
 
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <title>Kuesioner Literasi Digital</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-body{
-    font-family:'Poppins',sans-serif;
-}
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
 
-.option-card div{
-    @apply bg-white border border-slate-200 rounded-xl p-4 text-center cursor-pointer transition-all duration-200;
-}
+    .option-card input {
+      display: none;
+    }
 
-.option-card input:checked + div{
-    background: linear-gradient(135deg,#6366f1,#8b5cf6);
-    color:white;
-    border-color:#6366f1;
-    transform:scale(1.02);
-}
+    .option-card div {
+      transition: all .25s ease;
+    }
 
-</style>
+    .option-card input:checked+div {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border-color: #6366f1;
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, .35);
+    }
 
-<title>Kuesioner</title>
+    .question-card:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+
 </head>
 
-<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen p-4 md:p-8">
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen">
 
-<div class="max-w-5xl mx-auto">
-<div class="container">
-<div class="header">
-<h1>Kuesioner Literasi Digital</h1>
-<p>
-        <div>Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi, dan literasi digital guru 
-        dalam memanfaatkan teknologi Artificial Intelligence (AI) pada pembelajaran Bahasa Indonesia.</div>
-        <div><Mohon berikan jawaban yang paling sesuai dengan kondisi dan pandangan Anda.</div>
-</p>
+  <div class="max-w-5xl mx-auto p-4 md:p-8">
 
-<div style="margin-top:20px;">
-<div style="margin-top:20px;">
-<label style="display:block;margin-bottom:8px;font-weight:600;">Nama Responden</label>
-<input id="nama" placeholder="Masukkan nama Anda" style="width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;" type="text"/>
-</div>
-<div style="margin-top:20px;">
-<label style="display:block;margin-bottom:8px;font-weight:600;">Asal Sekolah</label>
-<input id="asal_sekolah" placeholder="Masukkan asal sekolah Anda" style="width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;" type="text"/>
-</div>
-</div></div>
-<div class="section">
-<h2>Aspek kesiapan dan literasi digital</h2>
-<p class="desc">Mengukur pemahaman fundamental terhadap teknologi digital dan teori literasi baru (new literacies) dalam konteks pengajaran.</p>
-<div class="sub-title">
-                Pemahaman Fundamental Teknologi (Teknis)-Sejauh mana familiar dengan perangkat AI (seperti ChatGPT, aplikasi analisis teks, dsb.) dan mampu mengoperasikannya.
+    ```
+    <!-- HEADER -->
+
+    <div class="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl shadow-2xl p-6 md:p-10 text-white mb-8">
+
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        Kuesioner Literasi Digital
+      </h1>
+
+      <p class="leading-relaxed text-white/90">
+        Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi,
+        dan literasi digital dalam memanfaatkan teknologi Artificial Intelligence (AI).
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 mt-8">
+
+        <div>
+          <label class="block mb-2 font-semibold">
+            Nama Responden
+          </label>
+
+          <input type="text" id="nama" placeholder="Masukkan nama Anda"
+            class="w-full rounded-2xl border-0 p-4 text-slate-700 shadow-lg focus:ring-4 focus:ring-indigo-300">
+        </div>
+
+        <div>
+          <label class="block mb-2 font-semibold">
+            Asal Sekolah
+          </label>
+
+          <input type="text" id="asal_sekolah" placeholder="Masukkan asal sekolah"
+            class="w-full rounded-2xl border-0 p-4 text-slate-700 shadow-lg focus:ring-4 focus:ring-indigo-300">
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SECTION -->
+
+    <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-6">
+
+      <h2 class="text-2xl font-bold text-slate-800 mb-2">
+        Aspek Kesiapan dan Literasi Digital
+      </h2>
+
+      <p class="text-slate-500 mb-8">
+        Mengukur pemahaman fundamental terhadap teknologi digital dan AI.
+      </p>
+
+      <!-- QUESTION 1 -->
+
+      <div class="question-card border border-slate-200 rounded-3xl p-6 mb-6 transition-all duration-300">
+
+        <p class="font-semibold text-slate-700 leading-relaxed">
+          1. Saya menyadari pentingnya mengajarkan etika digital kepada siswa.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mt-5">
+
+          <label class="option-card">
+            <input type="radio" name="q1" value="1">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              STS
             </div>
-<div class="question">
-<p>1. Saya menyadari pentingnya mengajarkan etika digital kepada siswa, seperti menghindari plagiasi dan menyalin utuh hasil karya AI.</p>
-<div class="options">
-<div class="option">
-<input id="q1_1" name="q1" type="radio" value="1"/>
-<label for="q1_1">STS</label>
-</div>
-<div class="option">
-<input id="q1_2" name="q1" type="radio" value="2"/>
-<label for="q1_2">TS</label>
-</div>
-<div class="option">
-<input id="q1_3" name="q1" type="radio" value="3"/>
-<label for="q1_3">N</label>
-</div>
-<div class="option">
-<input id="q1_4" name="q1" type="radio" value="4"/>
-<label for="q1_4">S</label>
-</div>
-<div class="option">
-<input id="q1_5" name="q1" type="radio" value="5"/>
-<label for="q1_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>2. Saya merasa penggunaan AI dalam pembelajaran Bahasa Indonesia justru membuat siswa malas berpikir kritis karena bergantung pada jawaban instan.</p>
-<div class="grid grid-cols-2 gap-3 mt-4">
+          </label>
 
-  <label class="option-card">
-    <input type="radio" name="q1" value="1" hidden>
-    <div>STS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="2" hidden>
-    <div>TS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="3" hidden>
-    <div>N</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q1" value="4" hidden>
-    <div>S</div>
-  </label>
-
-  <label class="option-card col-span-2">
-    <input type="radio" name="q1" value="5" hidden>
-    <div>SS</div>
-  </label>
-
-</div>
-
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>3. Saya memosisikan AI sebagai teman bertukar pikiran untuk menemukan ide baru saat merancang pembelajaran, bukan sekadar menyuruhnya membuatkan soal.</p>
-<div class="grid grid-cols-2 gap-3 mt-4">
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="1" hidden>
-    <div>STS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="2" hidden>
-    <div>TS</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="3" hidden>
-    <div>N</div>
-  </label>
-
-  <label class="option-card">
-    <input type="radio" name="q3" value="4" hidden>
-    <div>S</div>
-  </label>
-
-  <label class="option-card col-span-2">
-    <input type="radio" name="q3" value="5" hidden>
-    <div>SS</div>
-  </label>
-
-</div>
-
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="option">
-<input id="q3_2" name="q3" type="radio" value="2"/>
-<label for="q3_2">TS</label>
-</div>
-<div class="option">
-<input id="q3_3" name="q3" type="radio" value="3"/>
-<label for="q3_3">N</label>
-</div>
-<div class="option">
-<input id="q3_4" name="q3" type="radio" value="4"/>
-<label for="q3_4">S</label>
-</div>
-<div class="option">
-<input id="q3_5" name="q3" type="radio" value="5"/>
-<label for="q3_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="sub-title">
-                Kesiapan Pedagogis (New Literacies)-mengukur kemampuan guru mendesain instruksi yang menjadikan AI sebagai "mitra kognitif".
+          <label class="option-card">
+            <input type="radio" name="q1" value="2">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              TS
             </div>
-<div class="question">
-<p>4. Saya sering menjadikan hasil AI sebagai pembanding untuk menguji apakah materi yang saya rancang sudah cukup kuat dan logis sebelum diajarkan.</p>
-<div class="options">
-<div class="option">
-<input id="q4_1" name="q4" type="radio" value="1"/>
-<label for="q4_1">STS</label>
-</div>
-<div class="option">
-<input id="q4_2" name="q4" type="radio" value="2"/>
-<label for="q4_2">TS</label>
-</div>
-<div class="option">
-<input id="q4_3" name="q4" type="radio" value="3"/>
-<label for="q4_3">N</label>
-</div>
-<div class="option">
-<input id="q4_4" name="q4" type="radio" value="4"/>
-<label for="q4_4">S</label>
-</div>
-<div class="option">
-<input id="q4_5" name="q4" type="radio" value="5"/>
-<label for="q4_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>5. Saya tidak langsung menggunakan hasil dari AI namun perlu direvisi, diolah dan dikembangkan dengan ide saya sendiri.</p>
-<div class="options">
-<div class="option">
-<input id="q5_1" name="q5" type="radio" value="1"/>
-<label for="q5_1">STS</label>
-</div>
-<div class="option">
-<input id="q5_2" name="q5" type="radio" value="2"/>
-<label for="q5_2">TS</label>
-</div>
-<div class="option">
-<input id="q5_3" name="q5" type="radio" value="3"/>
-<label for="q5_3">N</label>
-</div>
-<div class="option">
-<input id="q5_4" name="q5" type="radio" value="4"/>
-<label for="q5_4">S</label>
-</div>
-<div class="option">
-<input id="q5_5" name="q5" type="radio" value="5"/>
-<label for="q5_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>6. Saya merasa sangat terbantu jika AI dapat memberi penilaian awal tulisan siswa, sehingga peran saya bisa bergeser menjadi fasilitator diskusi yang mendalam.</p>
-<div class="options">
-<div class="option">
-<input id="q6_1" name="q6" type="radio" value="1"/>
-<label for="q6_1">STS</label>
-</div>
-<div class="option">
-<input id="q6_2" name="q6" type="radio" value="2"/>
-<label for="q6_2">TS</label>
-</div>
-<div class="option">
-<input id="q6_3" name="q6" type="radio" value="3"/>
-<label for="q6_3">N</label>
-</div>
-<div class="option">
-<input id="q6_4" name="q6" type="radio" value="4"/>
-<label for="q6_4">S</label>
-</div>
-<div class="option">
-<input id="q6_5" name="q6" type="radio" value="5"/>
-<label for="q6_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>7. Saya memandang AI efektif digunakan untuk melatih daya nalar dan sikap kritis siswa terhadap suatu teks, dibandingkan sekadar mengajarkan tata bahasa.</p>
-<div class="options">
-<div class="option">
-<input id="q7_1" name="q7" type="radio" value="1"/>
-<label for="q7_1">STS</label>
-</div>
-<div class="option">
-<input id="q7_2" name="q7" type="radio" value="2"/>
-<label for="q7_2">TS</label>
-</div>
-<div class="option">
-<input id="q7_3" name="q7" type="radio" value="3"/>
-<label for="q7_3">N</label>
-</div>
-<div class="option">
-<input id="q7_4" name="q7" type="radio" value="4"/>
-<label for="q7_4">S</label>
-</div>
-<div class="option">
-<input id="q7_5" name="q7" type="radio" value="5"/>
-<label for="q7_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="sub-title">
-                Sikap, Persepsi, dan Etika (Afektif)-Bagaimana sikap mental terhadap disrupsi AI, termasuk pemahaman tentang bias AI, plagiarisme, dan etika digital.
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="q1" value="3">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              N
             </div>
-<div class="question">
-<p>8. Jika siswa menggunakan AI untuk mengembangkan ide tulisan, saya menilainya sebagai keterampilan literasi yang patut diapresiasi bukan kecurangan.</p>
-<div class="options">
-<div class="option">
-<input id="q8_1" name="q8" type="radio" value="1"/>
-<label for="q8_1">STS</label>
-</div>
-<div class="option">
-<input id="q8_2" name="q8" type="radio" value="2"/>
-<label for="q8_2">TS</label>
-</div>
-<div class="option">
-<input id="q8_3" name="q8" type="radio" value="3"/>
-<label for="q8_3">N</label>
-</div>
-<div class="option">
-<input id="q8_4" name="q8" type="radio" value="4"/>
-<label for="q8_4">S</label>
-</div>
-<div class="option">
-<input id="q8_5" name="q8" type="radio" value="5"/>
-<label for="q8_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>9. Saya mengajak siswa menggunakan aplikasi seperti Google Docs agar mereka bisa berkolaborasi, saling memberi masukan, dan mengedit tulisan secara langsung pada saat yang bersamaan</p>
-<div class="options">
-<div class="option">
-<input id="q9_1" name="q9" type="radio" value="1"/>
-<label for="q9_1">STS</label>
-</div>
-<div class="option">
-<input id="q9_2" name="q9" type="radio" value="2"/>
-<label for="q9_2">TS</label>
-</div>
-<div class="option">
-<input id="q9_3" name="q9" type="radio" value="3"/>
-<label for="q9_3">N</label>
-</div>
-<div class="option">
-<input id="q9_4" name="q9" type="radio" value="4"/>
-<label for="q9_4">S</label>
-</div>
-<div class="option">
-<input id="q9_5" name="q9" type="radio" value="5"/>
-<label for="q9_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>10. Saya mengganti tugas tertulis dengan pembuatan karya digital (seperti video, konten medsos, atau lainnya).</p>
-<div class="options">
-<div class="option">
-<input id="q10_1" name="q10" type="radio" value="1"/>
-<label for="q10_1">STS</label>
-</div>
-<div class="option">
-<input id="q10_2" name="q10" type="radio" value="2"/>
-<label for="q10_2">TS</label>
-</div>
-<div class="option">
-<input id="q10_3" name="q10" type="radio" value="3"/>
-<label for="q10_3">N</label>
-</div>
-<div class="option">
-<input id="q10_4" name="q10" type="radio" value="4"/>
-<label for="q10_4">S</label>
-</div>
-<div class="option">
-<input id="q10_5" name="q10" type="radio" value="5"/>
-<label for="q10_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>11. Saya memanfaatkan teknologi (seperti kuis daring atau pemeriksa ejaan otomatis) untuk memberikan koreksi atas kesalahan bahasa/penulisan siswa.</p>
-<div class="options">
-<div class="option">
-<input id="q11_1" name="q11" type="radio" value="1"/>
-<label for="q11_1">STS</label>
-</div>
-<div class="option">
-<input id="q11_2" name="q11" type="radio" value="2"/>
-<label for="q11_2">TS</label>
-</div>
-<div class="option">
-<input id="q11_3" name="q11" type="radio" value="3"/>
-<label for="q11_3">N</label>
-</div>
-<div class="option">
-<input id="q11_4" name="q11" type="radio" value="4"/>
-<label for="q11_4">S</label>
-</div>
-<div class="option">
-<input id="q11_5" name="q11" type="radio" value="5"/>
-<label for="q11_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-</div>
-<div class="section">
-<h2>Persepsi dan sikap terhadap AI</h2>
-<p class="desc">Pandangan mengenai AI sebagai "mitra kognitif" atau lingkungan belajar, bukan sekadar alat bantu.</p>
-<div class="sub-title">
-                Perspektif Instrumentalis (AI sebagai Alat Bantu)-keyakinan epistemologis terhadap AI
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="q1" value="4">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              S
             </div>
-<div class="question">
-<p>12. Saya menyesuaikan metode mengajar dengan fasilitas teknologi yang ada di sekolah agar target pembelajaran Bahasa Indonesia tercapai.</p>
-<div class="options">
-<div class="option">
-<input id="q12_1" name="q12" type="radio" value="1"/>
-<label for="q12_1">STS</label>
-</div>
-<div class="option">
-<input id="q12_2" name="q12" type="radio" value="2"/>
-<label for="q12_2">TS</label>
-</div>
-<div class="option">
-<input id="q12_3" name="q12" type="radio" value="3"/>
-<label for="q12_3">N</label>
-</div>
-<div class="option">
-<input id="q12_4" name="q12" type="radio" value="4"/>
-<label for="q12_4">S</label>
-</div>
-<div class="option">
-<input id="q12_5" name="q12" type="radio" value="5"/>
-<label for="q12_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>13. Saya menggunakan AI (seperti ChatGPT, Gemini, atau chatbot lainnya) untuk membantu siswa memunculkan ide-ide awal sebelum mereka mulai menulis karangan.</p>
-<div class="options">
-<div class="option">
-<input id="q13_1" name="q13" type="radio" value="1"/>
-<label for="q13_1">STS</label>
-</div>
-<div class="option">
-<input id="q13_2" name="q13" type="radio" value="2"/>
-<label for="q13_2">TS</label>
-</div>
-<div class="option">
-<input id="q13_3" name="q13" type="radio" value="3"/>
-<label for="q13_3">N</label>
-</div>
-<div class="option">
-<input id="q13_4" name="q13" type="radio" value="4"/>
-<label for="q13_4">S</label>
-</div>
-<div class="option">
-<input id="q13_5" name="q13" type="radio" value="5"/>
-<label for="q13_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>14. Saya merasa kesulitan ketika harus membantu siswa yang mengalami kendala teknis (seperti error atau gangguan akun) saat menggunakan AI.</p>
-<div class="options">
-<div class="option">
-<input id="q14_1" name="q14" type="radio" value="1"/>
-<label for="q14_1">STS</label>
-</div>
-<div class="option">
-<input id="q14_2" name="q14" type="radio" value="2"/>
-<label for="q14_2">TS</label>
-</div>
-<div class="option">
-<input id="q14_3" name="q14" type="radio" value="3"/>
-<label for="q14_3">N</label>
-</div>
-<div class="option">
-<input id="q14_4" name="q14" type="radio" value="4"/>
-<label for="q14_4">S</label>
-</div>
-<div class="option">
-<input id="q14_5" name="q14" type="radio" value="5"/>
-<label for="q14_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>15. Pelatihan teknologi yang saya terima selama ini masih terlalu umum dan belum mengajarkan cara praktis menggunakan AI khusus untuk pelajaran Bahasa Indonesia.</p>
-<div class="options">
-<div class="option">
-<input id="q15_1" name="q15" type="radio" value="1"/>
-<label for="q15_1">STS</label>
-</div>
-<div class="option">
-<input id="q15_2" name="q15" type="radio" value="2"/>
-<label for="q15_2">TS</label>
-</div>
-<div class="option">
-<input id="q15_3" name="q15" type="radio" value="3"/>
-<label for="q15_3">N</label>
-</div>
-<div class="option">
-<input id="q15_4" name="q15" type="radio" value="4"/>
-<label for="q15_4">S</label>
-</div>
-<div class="option">
-<input id="q15_5" name="q15" type="radio" value="5"/>
-<label for="q15_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="sub-title">
-                Perspektif Mitra Kognitif (AI sebagai Mitra Kognitif)
+          </label>
+
+          <label class="option-card col-span-2">
+            <input type="radio" name="q1" value="5">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              SS
             </div>
-<div class="question">
-<p>16. Beban administrasi dan target kurikulum yang padat membuat saya kekurangan waktu untuk mempelajari cara kerja AI lebih mendalam.</p>
-<div class="options">
-<div class="option">
-<input id="q16_1" name="q16" type="radio" value="1"/>
-<label for="q16_1">STS</label>
-</div>
-<div class="option">
-<input id="q16_2" name="q16" type="radio" value="2"/>
-<label for="q16_2">TS</label>
-</div>
-<div class="option">
-<input id="q16_3" name="q16" type="radio" value="3"/>
-<label for="q16_3">N</label>
-</div>
-<div class="option">
-<input id="q16_4" name="q16" type="radio" value="4"/>
-<label for="q16_4">S</label>
-</div>
-<div class="option">
-<input id="q16_5" name="q16" type="radio" value="5"/>
-<label for="q16_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>17. Jumlah perangkat (laptop/tablet) di sekolah yang terbatas membuat saya sulit menerapkan pembelajaran digital bagi seluruh siswa secara bersamaan.</p>
-<div class="options">
-<div class="option">
-<input id="q17_1" name="q17" type="radio" value="1"/>
-<label for="q17_1">STS</label>
-</div>
-<div class="option">
-<input id="q17_2" name="q17" type="radio" value="2"/>
-<label for="q17_2">TS</label>
-</div>
-<div class="option">
-<input id="q17_3" name="q17" type="radio" value="3"/>
-<label for="q17_3">N</label>
-</div>
-<div class="option">
-<input id="q17_4" name="q17" type="radio" value="4"/>
-<label for="q17_4">S</label>
-</div>
-<div class="option">
-<input id="q17_5" name="q17" type="radio" value="5"/>
-<label for="q17_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-</div>
-<div class="section">
-<h2>Praktik integrasi teknologi</h2>
-<p class="desc">Memetakan sejauh mana telah mengintegrasikan aplikasi berbasis teknologi dalam kurikulum Bahasa Indonesia saat ini.</p>
-<div class="sub-title">
-                Integrasi Aktif (Modifikasi &amp; Redefinisi)-menggunakan platform digital untuk kolaborasi penulisan teks secara real-time, menggunakan AI untuk memberikan umpan balik instan pada struktur kalimat, atau meminta siswa membuat proyek multimedia (literasi multimoda) sebagai pengganti esai tradisional.
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- QUESTION 2 -->
+
+      <div class="question-card border border-slate-200 rounded-3xl p-6 mb-6 transition-all duration-300">
+
+        <p class="font-semibold text-slate-700 leading-relaxed">
+          2. Saya memosisikan AI sebagai teman bertukar pikiran dalam pembelajaran.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mt-5">
+
+          <label class="option-card">
+            <input type="radio" name="q2" value="1">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              STS
             </div>
-<div class="question">
-<p>18. Sekolah tidak memiliki teknisi khusus yang bisa segera membantu jika terjadi gangguan perangkat atau sistem saat saya sedang mengajar.</p>
-<div class="options">
-<div class="option">
-<input id="q18_1" name="q18" type="radio" value="1"/>
-<label for="q18_1">STS</label>
-</div>
-<div class="option">
-<input id="q18_2" name="q18" type="radio" value="2"/>
-<label for="q18_2">TS</label>
-</div>
-<div class="option">
-<input id="q18_3" name="q18" type="radio" value="3"/>
-<label for="q18_3">N</label>
-</div>
-<div class="option">
-<input id="q18_4" name="q18" type="radio" value="4"/>
-<label for="q18_4">S</label>
-</div>
-<div class="option">
-<input id="q18_5" name="q18" type="radio" value="5"/>
-<label for="q18_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>19. Biaya langganan aplikasi AI versi berbayar (premium) terlalu mahal bagi saya maupun sekolah jika ingin digunakan dalam jangka panjang.</p>
-<div class="options">
-<div class="option">
-<input id="q19_1" name="q19" type="radio" value="1"/>
-<label for="q19_1">STS</label>
-</div>
-<div class="option">
-<input id="q19_2" name="q19" type="radio" value="2"/>
-<label for="q19_2">TS</label>
-</div>
-<div class="option">
-<input id="q19_3" name="q19" type="radio" value="3"/>
-<label for="q19_3">N</label>
-</div>
-<div class="option">
-<input id="q19_4" name="q19" type="radio" value="4"/>
-<label for="q19_4">S</label>
-</div>
-<div class="option">
-<input id="q19_5" name="q19" type="radio" value="5"/>
-<label for="q19_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>20. Koneksi internet di sekolah yang tidak stabil sering kali menghalangi saya saat ingin menggunakan aplikasi AI di kelas.</p>
-<div class="options">
-<div class="option">
-<input id="q20_1" name="q20" type="radio" value="1"/>
-<label for="q20_1">STS</label>
-</div>
-<div class="option">
-<input id="q20_2" name="q20" type="radio" value="2"/>
-<label for="q20_2">TS</label>
-</div>
-<div class="option">
-<input id="q20_3" name="q20" type="radio" value="3"/>
-<label for="q20_3">N</label>
-</div>
-<div class="option">
-<input id="q20_4" name="q20" type="radio" value="4"/>
-<label for="q20_4">S</label>
-</div>
-<div class="option">
-<input id="q20_5" name="q20" type="radio" value="5"/>
-<label for="q20_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>21. Saya mengharapkan model pembelajaran di mana siswa dapat berdialog/brainstorming dengan AI untuk mendiskusikan ide sebelum mereka menuangkannya dalam tulisan.</p>
-<div class="options">
-<div class="option">
-<input id="q21_1" name="q21" type="radio" value="1"/>
-<label for="q21_1">STS</label>
-</div>
-<div class="option">
-<input id="q21_2" name="q21" type="radio" value="2"/>
-<label for="q21_2">TS</label>
-</div>
-<div class="option">
-<input id="q21_3" name="q21" type="radio" value="3"/>
-<label for="q21_3">N</label>
-</div>
-<div class="option">
-<input id="q21_4" name="q21" type="radio" value="4"/>
-<label for="q21_4">S</label>
-</div>
-<div class="option">
-<input id="q21_5" name="q21" type="radio" value="5"/>
-<label for="q21_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>22. Saya membutuhkan model pembelajaran yang  mengurangi penyalahgunaan AI (plagiarisme) dalam karya tulis siswa.</p>
-<div class="options">
-<div class="option">
-<input id="q22_1" name="q22" type="radio" value="1"/>
-<label for="q22_1">STS</label>
-</div>
-<div class="option">
-<input id="q22_2" name="q22" type="radio" value="2"/>
-<label for="q22_2">TS</label>
-</div>
-<div class="option">
-<input id="q22_3" name="q22" type="radio" value="3"/>
-<label for="q22_3">N</label>
-</div>
-<div class="option">
-<input id="q22_4" name="q22" type="radio" value="4"/>
-<label for="q22_4">S</label>
-</div>
-<div class="option">
-<input id="q22_5" name="q22" type="radio" value="5"/>
-<label for="q22_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-</div>
-<div class="section">
-<h2>Hambatan pedagogis dan teknis</h2>
-<p class="desc">Hambatan Pedagogis dan Teknis dalam integrasi AI memerlukan analisis yang tajam untuk membedakan antara "hambatan luar" (infrastruktur) dan "hambatan dalam" (keyakinan dan kompetensi pedagogis)</p>
-<div class="sub-title">
-                hambatan internal (keyakinan dan kompetensi pedagogis)
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="q2" value="2">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              TS
             </div>
-<div class="question">
-<p>23. Saya berharap AI membantu dalam penilaian awal terhadap tulisan siswa sebelum saya memberikan penilaian akhir.</p>
-<div class="options">
-<div class="option">
-<input id="q23_1" name="q23" type="radio" value="1"/>
-<label for="q23_1">STS</label>
-</div>
-<div class="option">
-<input id="q23_2" name="q23" type="radio" value="2"/>
-<label for="q23_2">TS</label>
-</div>
-<div class="option">
-<input id="q23_3" name="q23" type="radio" value="3"/>
-<label for="q23_3">N</label>
-</div>
-<div class="option">
-<input id="q23_4" name="q23" type="radio" value="4"/>
-<label for="q23_4">S</label>
-</div>
-<div class="option">
-<input id="q23_5" name="q23" type="radio" value="5"/>
-<label for="q23_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-<div class="question">
-<p>24. Saya memberikan pemahaman kepada siswa berkaitan dengan pentingnya perlindungan data pribadi dan potensi penyalahgunaannya dalam AI.</p>
-<div class="options">
-<div class="option">
-<input id="q24_1" name="q24" type="radio" value="1"/>
-<label for="q24_1">STS</label>
-</div>
-<div class="option">
-<input id="q24_2" name="q24" type="radio" value="2"/>
-<label for="q24_2">TS</label>
-</div>
-<div class="option">
-<input id="q24_3" name="q24" type="radio" value="3"/>
-<label for="q24_3">N</label>
-</div>
-<div class="option">
-<input id="q24_4" name="q24" type="radio" value="4"/>
-<label for="q24_4">S</label>
-</div>
-<div class="option">
-<input id="q24_5" name="q24" type="radio" value="5"/>
-<label for="q24_5">SS</label>
-</div>
-</div>
-<div class="legend">
-<span>STS = Sangat Tidak Setuju</span>
-<span>TS = Tidak Setuju</span>
-<span>N = Netral</span>
-<span>S = Setuju</span>
-<span>SS = Sangat Setuju</span>
-</div>
-</div>
-</div>
-<div class="submit-area">
-<button onclick="submitForm()" type="button">Kirim Jawaban</button>
-</div>
-<div class="footer">
-    © 2026 - Kuesioner Digital Modern
-</div>
-</div>
-<script>
-async function submitForm() {
+          </label>
 
-    const data = {
-        nama: document.getElementById("nama").value
-    };
+          <label class="option-card">
+            <input type="radio" name="q2" value="3">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              N
+            </div>
+          </label>
 
-    const data_sekolah = {
-        asal_sekolah: document.getElementById("asal_sekolah").value
-    };
+          <label class="option-card">
+            <input type="radio" name="q2" value="4">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              S
+            </div>
+          </label>
 
+          <label class="option-card col-span-2">
+            <input type="radio" name="q2" value="5">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center cursor-pointer">
+              SS
+            </div>
+          </label>
 
-    const totalQuestions = document.querySelectorAll('.question').length;
+        </div>
 
-    for(let i = 1; i <= totalQuestions; i++){
-        const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        data[`q${i}`] = selected ? selected.value : "";
-    }
+      </div>
 
-    try {
+    </div>
+    ```
 
-        await fetch("https://script.google.com/macros/s/AKfycbx3k7VfxVQA1QMFKxsBOQh6HQyxeKyzt3hygqX7wFhT/dev", {
+  </div>
+
+  <!-- STICKY BUTTON -->
+
+  <div class="sticky bottom-0 p-4">
+
+    ```
+    <div class="max-w-5xl mx-auto">
+
+      <button id="submitBtn" onclick="submitForm()"
+        class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-[1.01] transition-all duration-300 text-white font-bold py-5 rounded-2xl shadow-2xl text-lg">
+        Kirim Jawaban
+      </button>
+
+    </div>
+    ```
+
+  </div>
+
+  <script>
+
+    async function submitForm() {
+
+      const nama =
+        document.getElementById("nama").value;
+
+      const sekolah =
+        document.getElementById("asal_sekolah").value;
+
+      if (nama.trim() === "") {
+
+        alert("Nama responden wajib diisi");
+        return;
+
+      }
+
+      const formData = new FormData();
+
+      formData.append("nama", nama);
+      formData.append("asal_sekolah", sekolah);
+
+      const totalQuestions =
+        document.querySelectorAll(".question-card").length;
+
+      for (let i = 1; i <= totalQuestions; i++) {
+
+        const selected =
+          document.querySelector(
+            `input[name="q${i}"]:checked`
+          );
+
+        formData.append(
+          `q${i}`,
+          selected ? selected.value : ""
+        );
+
+      }
+
+      try {
+
+        const btn =
+          document.getElementById("submitBtn");
+
+        btn.innerHTML = "Mengirim...";
+        btn.disabled = true;
+
+        await fetch(
+          "URL_GOOGLE_SCRIPT_ANDA",
+          {
             method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+            body: formData
+          }
+        );
+
+        btn.innerHTML = "Berhasil Terkirim";
 
         alert("Jawaban berhasil disimpan!");
-        location.reload();
 
-    } catch(error){
-        alert("Gagal mengirim data.");
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+
+      } catch (error) {
+
         console.error(error);
+
+        alert("Gagal mengirim data");
+
+        btn.innerHTML = "Kirim Jawaban";
+        btn.disabled = false;
+
+      }
+
     }
-}
-</script>
+
+  </script>
+
 </body>
+
 </html>
