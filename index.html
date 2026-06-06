@@ -1481,9 +1481,9 @@
             const sekolah =
                 document.getElementById("asal_sekolah").value;
 
-            if (nama.trim() === "") {
+            if (sekolah.trim() === "") {
 
-                alert("Nama responden wajib diisi");
+                alert("Asal sekolah wajib diisi");
                 return;
 
             }
@@ -1491,7 +1491,7 @@
             const formData = new FormData();
 
             formData.append("nama", nama);
-            formData.append("sekolah", asal_sekolah);
+            formData.append("asal_sekolah", sekolah);
 
             const totalQuestions =
                 document.querySelectorAll(".question-card").length;
