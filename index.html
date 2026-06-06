@@ -1517,21 +1517,24 @@
 
             }
 
-            try {
+            const btn = document.getElementById("submitBtn");
 
-                const btn =
-                    document.getElementById("submitBtn");
+            try {
 
                 btn.innerHTML = "Mengirim...";
                 btn.disabled = true;
 
-                await fetch(
+                const response = await fetch(
                     "https://script.google.com/macros/s/AKfycbzt_h_4jKJKMzRR2ij2Bs1NIlxMI-KaTApQN6TBu3BBN4hD6gPw86hrH9fOw2bV6AjR7Q/exec",
                     {
                         method: "POST",
                         body: formData
                     }
                 );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
 
                 btn.innerHTML = "Berhasil Terkirim";
 
