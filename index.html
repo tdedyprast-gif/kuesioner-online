@@ -45,9 +45,6 @@
 
     <div class="max-w-5xl mx-auto p-4 md:p-8">
 
-        ```
-        <!-- HEADER -->
-
         <div
             class="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl shadow-2xl p-6 md:p-10 text-white mb-8">
 
@@ -56,8 +53,9 @@
             </h1>
 
             <p class="leading-relaxed text-white/90">
-                Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi,
-                dan literasi digital dalam memanfaatkan teknologi Artificial Intelligence (AI).
+                Kuesioner ini bertujuan untuk mengukur kesiapan, persepsi, dan literasi digital guru
+                dalam memanfaatkan teknologi Artificial Intelligence (AI) pada pembelajaran Bahasa Indonesia.
+                Mohon berikan jawaban yang paling sesuai dengan kondisi dan pandangan Anda.
             </p>
 
             <div class="grid md:grid-cols-2 gap-4 mt-8">
@@ -93,15 +91,22 @@
             </h2>
 
             <p class="text-slate-500 mb-8">
-                Mengukur pemahaman fundamental terhadap teknologi digital dan AI.
+                Mengukur pemahaman fundamental terhadap teknologi digital dan teori literasi baru (new
+                literacies) dalam konteks pengajaran.
             </p>
+            <div class="sub-title">
+                Pemahaman Fundamental Teknologi (Teknis)-Sejauh mana guru familiar dengan perangkat AI (seperti ChatGPT,
+                aplikasi analisis teks, dsb.) dan mampu mengoperasikannya.
+            </div>
 
             <!-- QUESTION 1 -->
 
             <div class="question-card border border-slate-200 rounded-3xl p-6 mb-6 transition-all duration-300">
 
                 <p class="font-semibold text-slate-700 leading-relaxed">
-                    1. Saya menyadari pentingnya mengajarkan etika digital kepada siswa.
+                    1. Saya menyadari pentingnya mengajarkan etika digital kepada siswa, seperti menghindari plagiasi
+                    dan
+                    menyalin utuh hasil karya AI.
                 </p>
 
                 <div class="grid grid-cols-2 gap-3 mt-5">
@@ -142,7 +147,13 @@
                     </label>
 
                 </div>
-
+                <div class="legend">
+                    <span>STS = Sangat Tidak Setuju</span>
+                    <span>TS = Tidak Setuju</span>
+                    <span>N = Netral</span>
+                    <span>S = Setuju</span>
+                    <span>SS = Sangat Setuju</span>
+                </div>
             </div>
 
             <!-- QUESTION 2 -->
@@ -150,7 +161,9 @@
             <div class="question-card border border-slate-200 rounded-3xl p-6 mb-6 transition-all duration-300">
 
                 <p class="font-semibold text-slate-700 leading-relaxed">
-                    2. Saya memosisikan AI sebagai teman bertukar pikiran dalam pembelajaran.
+                    2. Saya merasa penggunaan AI dalam pembelajaran Bahasa Indonesia justru membuat siswa malas berpikir
+                    kritis
+                    karena bergantung pada jawaban instan.
                 </p>
 
                 <div class="grid grid-cols-2 gap-3 mt-5">
@@ -193,9 +206,14 @@
                 </div>
 
             </div>
-
+            <div class="legend">
+                <span>STS = Sangat Tidak Setuju</span>
+                <span>TS = Tidak Setuju</span>
+                <span>N = Netral</span>
+                <span>S = Setuju</span>
+                <span>SS = Sangat Setuju</span>
+            </div>
         </div>
-        ```
 
     </div>
 
@@ -203,7 +221,6 @@
 
     <div class="sticky bottom-0 p-4">
 
-        ```
         <div class="max-w-5xl mx-auto">
 
             <button id="submitBtn" onclick="submitForm()"
@@ -212,7 +229,6 @@
             </button>
 
         </div>
-        ```
 
     </div>
 
