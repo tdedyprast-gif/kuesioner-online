@@ -1481,6 +1481,13 @@
             const sekolah =
                 document.getElementById("asal_sekolah").value;
 
+            if (nama.trim() === "") {
+
+                alert("Nama wajib diisi");
+                return;
+
+            }
+            
             if (sekolah.trim() === "") {
 
                 alert("Asal sekolah wajib diisi");
