@@ -172,6 +172,7 @@
 </head>
 
 <body>
+    <form id="kuesionerForm" action="https://script.google.com/macros/s/AKfycbxDQD37BjgDncKb6HIrJn4nPSDj9eC5OaRylfNqLh5Rp0RoM44Sdxl96Z6Up-szMe4u/exec" method="post" target="hidden_iframe">
     <div class="container">
         <div class="header">
             <h1>Kuesioner Literasi Digital </h1>
@@ -1034,63 +1035,56 @@
             </div>
         </div>
         <div class="submit-area">
-            <button onclick="submitForm()" type="button">Kirim Jawaban</button>
+            <button id="submitBtn" type="submit">Kirim Jawaban</button>
         </div>
         <div class="footer">
             © 2026 - Kuesioner Guru
         </div>
     </div>
+    </form>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     <script>
-        async function submitForm() {
+        const form = document.getElementById("kuesionerForm");
+        const iframe = document.getElementById("hidden_iframe");
+        const submitBtn = document.getElementById("submitBtn");
+        let isSubmitting = false;
 
-            const nama =
-                document.getElementById("nama").value;
-
-            const sekolah =
-                document.getElementById("asal_sekolah").value;
-
-            if (sekolah.trim() === "") {
-
-                alert("Asal sekolah wajib diisi");
+        form.addEventListener("submit", function (event) {
+            const nama = document.getElementById("nama").value.trim();
+            if (!nama) {
+                alert("Nama wajib diisi");
+                event.preventDefault();
                 return;
-
             }
 
-            const data = {
-                nama: document.getElementById("nama").value
-            };
-
-            const data_sekolah = {
-                asal_sekolah: document.getElementById("asal_sekolah").value
-            };
-
+            const sekolah = document.getElementById("asal_sekolah").value.trim();
+            if (!sekolah) {
+                alert("Asal sekolah wajib diisi");
+                event.preventDefault();
+                return;
+            }
 
             const totalQuestions = document.querySelectorAll('.question').length;
-
             for (let i = 1; i <= totalQuestions; i++) {
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                data[`q${i}`] = selected ? selected.value : "";
+                if (!selected) {
+                    alert(`Jawaban nomor ${i} wajib dipilih`);
+                    event.preventDefault();
+                    return;
+                }
             }
 
-            try {
+            isSubmitting = true;
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Mengirim...";
+        });
 
-                await fetch("https://script.google.com/macros/s/AKfycbxDQD37BjgDncKb6HIrJn4nPSDj9eC5OaRylfNqLh5Rp0RoM44Sdxl96Z6Up-szMe4u/exec", {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                alert("Jawaban berhasil disimpan!");
-                location.reload();
-
-            } catch (error) {
-                alert("Gagal mengirim data.");
-                console.error(error);
-            }
-        }
+        iframe.addEventListener("load", function () {
+            if (!isSubmitting) return;
+            isSubmitting = false;
+            alert("Jawaban berhasil disimpan!");
+            location.reload();
+        });
     </script>
 </body>
 
